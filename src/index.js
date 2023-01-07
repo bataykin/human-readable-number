@@ -1,6 +1,7 @@
 module.exports = function toReadable(number) {
     let res = "";
     let x = String(number);
+    if (x == '0') return 'zero'
     const numbers0_19 = [
         "",
         "one",
@@ -36,7 +37,7 @@ module.exports = function toReadable(number) {
         "ninety",
     ];
     if (x.length == 3) {
-        res += x[0] == "1" ? "one hundred " : numbers0_19[+x[0]] + " hundreds ";
+        res += x[0] == "1" ? "one hundred " : numbers0_19[+x[0]] + " hundred ";
 
         res +=
             +x[1] > 1
@@ -45,7 +46,7 @@ module.exports = function toReadable(number) {
     } else if (x.length == 2) {
         // console.log(Number(x[0])*10 + Number(x[1]));
         res +=
-           +x[0]>1
+            +x[0] > 1
                 ? numbers20_90[+x[0]] + " " + numbers0_19[+x[1]]
                 : numbers0_19[Number(x[0]) * 10 + Number(x[1])];
     } else {
